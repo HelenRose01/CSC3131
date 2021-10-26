@@ -44,4 +44,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Test1
         run: |
-          python -m unittest tests/db.py
+          python -m unittest tests/main.py
