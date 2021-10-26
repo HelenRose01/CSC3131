@@ -29,4 +29,4 @@ jobs:
       - name: Test1
         run: |
           cd CSC3131
-          python -m unittest tests/main.py
+          python -m pytest tests/db.py
