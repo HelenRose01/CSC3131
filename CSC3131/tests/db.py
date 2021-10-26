@@ -1,7 +1,6 @@
-import sqlite3
 
 import unittest
-from CSC3131.flaskr.db import get_db
+from flaskr.db import get_db
 
 
 class dbTest(unittest.TestCase):
@@ -11,3 +10,17 @@ class dbTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
