@@ -28,5 +28,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Test1
         run: |
+          import Flask
           cd CSC3131
           python -m unittest tests/db.py
