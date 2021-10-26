@@ -45,4 +45,5 @@ jobs:
       - name: Test1
         run: |
           cd CSC3131
+          pip install Flask
           python -m unittest tests/main.py
