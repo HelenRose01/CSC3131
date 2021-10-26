@@ -1,15 +1,13 @@
 import sqlite3
 
-import pytest
+import unittest
 from CSC3131.flaskr.db import get_db
 
 
-def test_get_close_db(app):
-    with app.app_context():
+class dbTest(unittest.TestCase):
+    def test_get_close_db(app):
         db = get_db()
         assert db is get_db()
 
-    with pytest.raises(sqlite3.ProgrammingError) as e:
-        db.execute('SELECT 1')
-
-    assert 'closed' in str(e.value)
+if __name__ == '__main__':
+    unittest.main()
