@@ -28,7 +28,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          CSC3131
+          cd CSC3131
           pip install Flask
           py -3 -m venv venv
           venv\Scripts\activate
