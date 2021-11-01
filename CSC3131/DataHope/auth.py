@@ -33,6 +33,7 @@ def register():
             except db.IntegrityError:
                 error = f"User {username} is already registered."
             else:
+                db.execute("CREATE TABLE IF NOT EXISTS " + username + "(id INTEGER PRIMARY KEY autoincrement)")
                 return redirect(url_for("auth.login"))
 
         flash(error)
