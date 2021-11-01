@@ -1,1 +1,11 @@
-hello
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Get Data from your Database{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form action="/home">
+    <input type="submit" value="Home" />
+</form>
+{% endblock %}
