@@ -3,3 +3,15 @@
 {% block header %}
   <h1>{% block title %}Home{% endblock %}</h1>
 {% endblock %}
+
+{% block content %}
+<form action="/database_queries/add_data">
+    <input type="submit" value="Add to Database" />
+</form>
+<form action="/database_queries/get_data">
+    <input type="submit" value="Get Data from Database" />
+</form>
+<form action="/database_queries/change_info">
+    <input type="submit" value="Change User Info" />
+</form>
+{% endblock %}
