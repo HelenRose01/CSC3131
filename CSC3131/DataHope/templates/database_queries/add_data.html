@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block content %}
+<form method="post">
+    <label for="newcolumn">New Column Name</label>
+    <input name="newcolumn" id="newcolumn">
+    <input type="submit" value="Submit">
+</form>
+
+
 <form action="/home">
     <input type="submit" value="Home" />
 </form>
