@@ -7,8 +7,18 @@ from .db import get_db
 
 bp = Blueprint('database_queries', __name__, url_prefix='/database_queries')
 
-@bp.route('/add_data')
+@bp.route('/add_data', methods=('GET', 'POST'))
 def add_data():
+    if request.method=='POST':
+        newcolumn = request.form['newcolumn']
+        datatype = request.form['datatype']
+
+        db = get_db()
+        error = None
+
+        if newcolumn != '' :
+            db.execute("ALTER TABLE " + session['username'] + " ADD " + newcolumn +" "+ datatype + ";")
+            db.commit()
     return render_template('/database_queries/add_data.html')
 
 @bp.route('/get_data')
