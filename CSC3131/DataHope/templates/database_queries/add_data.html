@@ -11,12 +11,13 @@
     <input name="newcolumn" id="newcolumn">
     <label for="datatype">Datatype of column</label>
     <input name="datatype" id="datatype">
-    <input type="submit" value="Submit">
+  {% for data in charity_data %}
+    <label for="column">{{data[1]}}</label>
+    <input name="column" id="column">
+    {% endfor %}}
+     <input type="submit" value="Submit">
 </form>
 
-{% for data in charity_data %}
-<p>{{ data[1] }}</p>
-{% endfor %}}
 
 <form action="/home">
     <input type="submit" value="Home" />

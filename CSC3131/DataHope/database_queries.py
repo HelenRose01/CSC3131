@@ -15,13 +15,19 @@ def add_data():
     if request.method=='POST':
         newcolumn = request.form['newcolumn']
         datatype = request.form['datatype']
+        column = request.form['column']
 
+        if newcolumn != None and datatype != None:
 
-        error = None
-
-        if newcolumn != '' :
-            db.execute("ALTER TABLE " + session['username'] + " ADD " + newcolumn +" "+ datatype + ";")
-            db.commit()
+            if newcolumn != '' :
+                db.execute("ALTER TABLE " + session['username'] + " ADD " + newcolumn +" "+ datatype + ";")
+                db.commit()
+        elif column != None:
+            cols = []
+            for i in charity_data:
+                for j in i:
+                    cols.append(j)
+            db.execute("INSERT TO " + session['username'] + " (" + cols + ") VALUES (?)", column)
     return render_template('/database_queries/add_data.html', charity_data=charity_data)
 
 @bp.route('/get_data')
