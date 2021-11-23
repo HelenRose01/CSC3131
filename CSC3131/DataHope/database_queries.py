@@ -10,29 +10,35 @@ bp = Blueprint('database_queries', __name__, url_prefix='/database_queries')
 @bp.route('/add_data', methods=('GET', 'POST'))
 def add_data():
     db = get_db()
-    charity_data = db.execute("PRAGMA table_info( " +
+    columns = db.execute("PRAGMA table_info( " +
                               session['username'] + ");").fetchall()
     if request.method=='POST':
         newcolumn = request.form['newcolumn']
         datatype = request.form['datatype']
-        column = request.form['column']
+        record = []
+        r = 0
+        for i in columns:
+             record.append(request.form[i[1]])
+             r=r+1
 
         if newcolumn != None and datatype != None:
 
             if newcolumn != '' :
                 db.execute("ALTER TABLE " + session['username'] + " ADD " + newcolumn +" "+ datatype + ";")
                 db.commit()
-        elif column != None:
+        else:
             cols = []
-            for i in charity_data:
-                for j in i:
-                    cols.append(j)
-            db.execute("INSERT TO " + session['username'] + " (" + cols + ") VALUES (?)", column)
-    return render_template('/database_queries/add_data.html', charity_data=charity_data)
+            for j in columns:
+                cols.append(j[1])
+            db.execute("INSERT INTO " + session['username'] + " (" +  cols[1], cols[2], cols[3] + ") VALUES (?,?,?,?)",
+                       record[0], record[1], record[2], record[3])
+    return render_template('/database_queries/add_data.html', columns=columns)
 
 @bp.route('/get_data')
 def get_data():
-    return render_template('/database_queries/get_data.html')
+    db = get_db()
+    table = db.execute("SELECT * FROM " + session['username']+";").fetchall()
+    return render_template('/database_queries/get_data.html', table=table)
 
 @bp.route('/change_info', methods=('GET', 'POST'))
 def change_info():
