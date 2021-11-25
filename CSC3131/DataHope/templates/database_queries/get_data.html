@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block content %}
-
+{% for col in table %}
+{%for data in col%}
+<p>{{data}}</p>
+{% endfor %}}
+{% endfor %}}
 
 <form action="/home">
     <input type="submit" value="Home" />
