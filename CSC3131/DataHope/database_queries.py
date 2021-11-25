@@ -9,6 +9,7 @@ bp = Blueprint('database_queries', __name__, url_prefix='/database_queries')
 
 @bp.route('/add_data', methods=('GET', 'POST'))
 def add_data():
+    cols=[]
     db = get_db()
     columns = db.execute("PRAGMA table_info( " +
                               session['username'] + ");").fetchall()
@@ -21,18 +22,19 @@ def add_data():
              record.append(request.form[i[1]])
              r=r+1
 
-        if newcolumn != None and datatype != None:
+        if newcolumn != '' and datatype != '':
 
             if newcolumn != '' :
                 db.execute("ALTER TABLE " + session['username'] + " ADD " + newcolumn +" "+ datatype + ";")
                 db.commit()
+                db.close()
         else:
-            cols = []
             for j in columns:
                 cols.append(j[1])
-            db.execute("INSERT INTO " + session['username'] + " (" +  cols[1], cols[2], cols[3] + ") VALUES (?,?,?,?)",
-                       record[0], record[1], record[2], record[3])
-    return render_template('/database_queries/add_data.html', columns=columns)
+            db.execute("INSERT INTO " + session['username'] + "(" + cols[1] + ") VALUES (?)", (record[1],))
+            db.commit()
+            db.close()
+    return render_template('/database_queries/add_data.html', columns=columns, cols = cols)
 
 @bp.route('/get_data')
 def get_data():
