@@ -31,10 +31,10 @@ def add_data():
         else:
             for j in columns:
                 cols.append(j[1])
-            db.execute("INSERT INTO " + session['username'] + "(" + cols[1] + ") VALUES (?)", (record[1],))
+            db.execute("INSERT INTO " + session['username'] + "(" + cols[1] + ", "+cols[2]+") VALUES (?,?)", (record[1], record[2]))
             db.commit()
             db.close()
-    return render_template('/database_queries/add_data.html', columns=columns, cols = cols)
+    return render_template('/database_queries/add_data.html', columns=columns)
 
 @bp.route('/get_data')
 def get_data():
