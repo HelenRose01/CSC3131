@@ -26,5 +26,5 @@ To start the project in powershell you need to:
    1) flask run
 6) You will then be given the port of where it is running, copy and paste 
     into your web browser and add /auth/register to take you to the registration page
-
+7) If wanting to get to the dashboard add /dashboard
 
