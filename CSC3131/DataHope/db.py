@@ -1,3 +1,4 @@
+#Initialises the database for use in other python files
 import sqlite3
 
 import click

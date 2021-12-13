@@ -1,3 +1,5 @@
+--Creates a table called user
+
 DROP TABLE IF EXISTS user;
 
 

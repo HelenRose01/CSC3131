@@ -1,9 +1,12 @@
+<!-- HTML page which allows th user to get the data from their database table -->
 {% extends 'base.html' %}
 
+<!-- Page title -->
 {% block header %}
   <h1>{% block title %}Get Data from your Database{% endblock %}</h1>
 {% endblock %}
 
+<!-- gets the information from database_queries.py and iterates through the information and diaplays it-->
 {% block content %}
 {% for col in table %}
 {%for data in col%}
@@ -11,6 +14,7 @@
 {% endfor %}}
 {% endfor %}}
 
+<!-- BUtton to get the user to the homepage -->
 <form action="/home">
     <input type="submit" value="Home" />
 </form>

@@ -1,9 +1,12 @@
+<!-- HTML file which allows the user to change their information-->
 {% extends 'base.html' %}
 
+<!-- Page Title -->
 {% block header %}
   <h1>{% block title %}Change User Info{% endblock %}</h1>
 {% endblock %}
 
+<!-- form which allows the user to enter their new information, the info then gets passes to home.py -->
 {% block content %}
 <p>To change info, use form below, you cannot change your username and all fields must be filled in</p>
 <form method="post">
@@ -17,6 +20,8 @@
     <input name="email" id="email" required>
     <input type="submit" value="Change Info">
   </form>
+
+<!-- Button which is used to get to the homepage -->
 <form action="/home">
     <input type="submit" value="Home" />
 </form>

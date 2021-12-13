@@ -1,9 +1,12 @@
+<!-- HTML file for the homepage -->
 {% extends 'base.html' %}
 
+<!-- Page's title-->
 {% block header %}
   <h1>{% block title %}Home{% endblock %}</h1>
 {% endblock %}
 
+<!-- A menu which the user uses to navigate between the different pages -->
 {% block content %}
 <form action="/database_queries/add_data">
     <input type="submit" value="Add to Database" />

@@ -1,9 +1,13 @@
+<!--HTML for the login page-->
 {% extends 'base.html' %}
 
+<!--Title of the page-->
 {% block header %}
   <h1>{% block title %}Log In{% endblock %}</h1>
 {% endblock %}
 
+<!--Form which user uses to enter username and password-->
+<!--The entered info is then used in auth.py-->
 {% block content %}
   <form method="post">
     <label for="username">Username</label>

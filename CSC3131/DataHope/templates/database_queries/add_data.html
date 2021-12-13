@@ -1,9 +1,13 @@
+<!-- HTML file which allows user to add data to their database table-->
 {% extends 'base.html' %}
 
+<!-- Title of the page -->
 {% block header %}
   <h1>{% block title %}Add data {% endblock %}</h1>
 {% endblock %}
 
+<!-- Form which allows the user to add a column to their database table -->
+<!-- The info is then passed to database_queries.py-->
 {% block content %}
 <h3> Add new column (need 5 columns to be able to add to data)</h3>
 <form method="post">
@@ -12,14 +16,17 @@
     <label for="datatype">Datatype of column</label>
     <input name="datatype" id="datatype">
 
+    <!-- Form which allows the user to add a data to their database table's columns -->
+    <!-- The info is then passed to database_queries.py-->
     <h3> Add data to columns</h3>
-  {% for data in columns %}
+  {% for data in columns %} <!-- iterates through all columns in user's table-->
     <label for="{{data[1]}}">{{data[1]}}</label>
     <input name="{{data[1]}}" id="{{data[1]}}">
     {% endfor %}}
      <input type="submit" value="Submit">
 </form>
 
+<!-- Button that takes the user to the homepage -->
 <form action="/home">
     <input type="submit" value="Home" />
 </form>

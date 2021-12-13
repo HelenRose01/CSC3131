@@ -1,9 +1,11 @@
+<!-- HTML file which is the basis for all the other HTML files -->
 <!doctype html>
 <title>{% block title %}{% endblock %} - DataHope</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
   <h1>DataHope</h1>
   <ul>
+    <!-- The menu displayed on all of the HTML pages -->
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>

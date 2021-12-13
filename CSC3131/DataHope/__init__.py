@@ -1,3 +1,4 @@
+#This file initiates everything for the FLASK application to work
 import os
 
 from flask import Flask
