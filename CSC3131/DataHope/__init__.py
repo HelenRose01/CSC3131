@@ -42,4 +42,7 @@ def create_app(test_config=None):
     from . import database_queries
     app.register_blueprint(database_queries.bp)
 
+    import flask_monitoringdashboard as dashboard
+    dashboard.bind(app)
+
     return app
